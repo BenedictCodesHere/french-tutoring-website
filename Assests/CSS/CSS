@@ -1,0 +1,21 @@
+
+
+body {
+
+    justify-content: center !important;
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+}
+
+.card {
+
+    justify-content: center !important;
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+}
+
+
+
+.ml-5 {
+    margin-left: ($spacer * 3) !important;
+  }
