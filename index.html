@@ -41,58 +41,51 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav justify-content-center mb-5">
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
+      <a class="nav-link" href="#home">Home</a>
     </li>
     <li class="nav-item">
-     <a class="nav-link" href="#">Book</a>
+     <a class="nav-link" href="#book">Book</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">About Me</a>
+      <a class="nav-link" href="#about">About Me</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Booking Options</a>
+      <a class="nav-link" href="#options">Booking Options</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Testimonials</a>
+      <a class="nav-link" href="#testimonials">Testimonials</a>
     </li>
   </ul>
   </nav>
   <!-- Navabr end-->
 
-      <div class="jumbotron">
-      <div class="col-6">
-        <h1 class="display-4 text-center">French Tuition!</h1>
-        <p class="lead text-center">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      </div>
+      
 
+<!-- Jumbotron home page start-->
+  <div class="jumbotron mt-5" id="home">
+    <div class="container row">
+        <div class="col-6">
+      <h1 class="display-4 text-center">French tutoring</h1>
+      <p class="lead text-center">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div> <!-- column end-->
 
-<!--  Video-->
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-     <video class="video" width="320" height="240" controls>
-      <source src="movie.mp4" type="video/mp4">
-        <source src="movie.ogg" type="video/ogg">
-          Your browser does not support the video tag.
-     </video>
+    <!-- video start-->
+      <video class="video" width="320" height="240" controls>
+            <source src="movie.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+    <!-- video end-->
 
-<!-- Calendly inline widget begin -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/teamcarambatesting/1-2-1-tutoring-session-free-trial" style="min-width:320px;height:630px;"></div>
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Calendly inline widget end -->
-      </div> <!-- closing col-->
-    </div> <!-- closing col-->
-  </div> <!-- closing row-->
-</div> <!-- closing container-->
-
-<!-- video end-->
-
- 
+    </div>
+        <div class="calendly-inline-widget mt-5" id="book" data-url="https://calendly.com/teamcarambatesting/1-2-1-tutoring-session-free-trial" style="min-width:320px;height:920px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
+  <!-- Jumbotron home page end-->
 
 
 <!-- jumbotron About-->
-<div class="jumbotron mt-5">
+<div class="jumbotron mt-5" id="about">
   <div class="container">
     <h1 class="display-4 text-center">About Me</h1>
     <p class="lead text-center">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
@@ -103,7 +96,7 @@
 
 <!-- cards-->
 <!-- card 1-->
-<div class="container">
+<div class="container" id="options">
   <div class="row">
     <div class="col-4">
 <div class="card mb-5 mt-5" style="width: 15rem; height: 25rem;">
@@ -111,7 +104,9 @@
     <h5 class="card-title text-center">Card title</h5>
     <h6 class="card-subtitle mb-2 text-muted text-center">Card subtitle</h6>
     <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <button type="button" class="btn btn-secondary btn-sm">Book Now!</button>
+    <div class="text-center">
+        <button type="button" class="btn btn-secondary btn-sm">Book Now!</button>
+        </div>  <!-- button text center end-->
   </div>
 </div>
 </div> <!-- column end-->
@@ -124,7 +119,9 @@
     <h5 class="card-title text-center">Card title</h5>
     <h6 class="card-subtitle mb-2 text-muted text-center">Card subtitle</h6>
     <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="text-center">
     <button type="button" class="btn btn-secondary btn-sm">Book Now!</button>
+    </div>  <!-- button text center end-->
   </div>
 </div>
 </div> <!-- card 2 end-->
@@ -138,7 +135,9 @@
     <h5 class="card-title text-center">Card title</h5>
     <h6 class="card-subtitle mb-2 text-muted text-center">Card subtitle</h6>
     <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <button type="button" class="btn btn-secondary btn-sm">Book Now!</button>
+    <div class="text-center">
+        <button type="button" class="btn btn-secondary btn-sm">Book Now!</button>
+        </div>  <!-- button text center end-->
   </div>
 </div>
 </div>
@@ -149,7 +148,7 @@
 
 
 <!-- jumbotron Testimonials-->
-<div class="jumbotron">
+<div class="jumbotron" id="testimonials">
   <div class="container">
     <h1 class="display-4 text-center">Testimonials</h1>
     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
