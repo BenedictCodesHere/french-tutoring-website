@@ -9,6 +9,15 @@
 
 
 
+$('#theme-btn-one').on('click', function(){
+        
+})
+$('#theme-btn-two').on('click', function(){
+
+})
+$('#theme-btn-three').on('click', function(){
+
+})
 
 
 
