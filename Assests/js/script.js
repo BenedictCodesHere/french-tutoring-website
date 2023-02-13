@@ -9,10 +9,10 @@ let selectedRadioBtn;
 // The comments within the function should be commented out on deployment, as those comments check whether the user has made an active
 // choice for the styling of the page on a prior visit.
 window.addEventListener('DOMContentLoaded', function(){
-    // var themeCheck = this.localStorage.getItem('theme');
-    // if(themeCheck == null) {
+    var themeCheck = this.localStorage.getItem('theme');
+    if(themeCheck == null) {
         myModal.show();
-    // }
+    }
     
     
    })
