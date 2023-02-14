@@ -8,6 +8,7 @@
   <!-- <link rel="stylesheet" href="styles/reset.css" /> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> 
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
   <script
   src="https://code.jquery.com/jquery-3.6.3.min.js"
   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
@@ -107,11 +108,7 @@
     </div> <!-- column end-->
 
     <!-- video start-->
-      <video class="video" width="320" height="240" controls>
-            <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-            Your browser does not support the video tag.
-        </video>
+            <div class="col-2" id="youtube-container"></div>
     <!-- video end-->
 
     </div>
@@ -196,7 +193,7 @@
   <div class="container">
     <h1 class="display-4 text-center">Recette du jour</h1>
     <div class="container baguette-div"></div>
-    <p class="lead baguette-description text-center">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <!-- <p class="lead baguette-description text-center">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
   </div>
 </div>
 
@@ -240,15 +237,15 @@
 <div class="container" id="theme-buttons">
   <div class="row">
 
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Business</a>
+    <ul class="nav nav-pills nav-justified">
+      <li class="nav-item  p-1">
+        <a class="nav-link business themer active" data-number = "1" data-toggle="pill" id="theme-btn-one" aria-current="page" href="#">Business</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link kids" href="#">Kids</a>
+      <li class="nav-item  p-1">
+        <a class="nav-link kids themer " data-toggle="pill" data-number = "2" id="theme-btn-two" href="#">Kids</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link fun" href="#">Fun</a>
+      <li class="nav-item  p-1">
+        <a class="nav-link fun themer" data-toggle="pill" data-number = "3" id="theme-btn-three" href="#">Fun</a>
       </li>
     </ul>
     
