@@ -12,6 +12,40 @@ window.addEventListener('DOMContentLoaded', function(){
     var themeCheck = this.localStorage.getItem('theme');
     if(themeCheck == null) {
         myModal.show();
+
+        $('[name=styling]').on('click', function(event){
+            console.log(event.target.value);
+            selectedRadioBtn = event.target.value;
+            console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
+            theme = localStorage.getItem('theme');
+        })
+        
+        // Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
+        // choose their theme.
+        $('#close-modal').on('click', function(event){
+         selectedRadioBtn = 3;
+         console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+         youtubeApiCall(selectedRadioBtn);
+         GetImage(selectedRadioBtn);
+         checkTheme(selectedRadioBtn);
+         theme = localStorage.getItem('theme');
+        })
+        
+        $('#save-modal').on('click', function(){
+        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+        if(selectedRadioBtn != undefined) {
+            console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+            localStorage.setItem('theme', selectedRadioBtn);
+            myModal.hide()
+            // this runs the function
+            youtubeApiCall(selectedRadioBtn);
+            GetImage(selectedRadioBtn);
+            checkTheme(selectedRadioBtn);
+            theme = localStorage.getItem('theme');
+        }
+        })
+
+
     }
     
     
@@ -21,31 +55,25 @@ window.addEventListener('DOMContentLoaded', function(){
    console.log(`theme: ${theme}`);
    GetImage(theme);
 
-
-   $('[name=styling]').on('click', function(event){
-        console.log(event.target.value);
-        selectedRadioBtn = event.target.value;
-        console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
-})
-
-// Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
-// choose their theme.
-$('#close-modal').on('click', function(event){
-     selectedRadioBtn = 3;
-     console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-     GetImage(selectedRadioBtn);
-})
-
-$('#save-modal').on('click', function(){
-    console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-    if(selectedRadioBtn != undefined) {
-        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-        localStorage.setItem('theme', selectedRadioBtn);
-        myModal.hide()
-        // this runs the function
-        GetImage(selectedRadioBtn);
+   function checkTheme(themeStored){
+    let currentlyActiveBtnNumber = $('.active').attr('data-number');
+    // Apply the class of active to the button which has the data-number equal to the 
+    // value stored in the theme variable
+    if(currentlyActiveBtnNumber != themeStored){
+        $('.active').removeClass('active');
     }
-})
+    var setActiveBtn = $('.nav-pills').find(`[data-number=${themeStored}]`);
+    console.log(setActiveBtn);
+    $(setActiveBtn).addClass('active');
+}
+
+checkTheme(theme);
+
+
+
+    
+
+
 
 
 
@@ -60,10 +88,9 @@ $.ajax({
         console.log(unsplashResponse);
        var baguetteDiv = $('.baguette-div');
        baguetteDiv.empty();
-       var baguetteDescription = $('.baguette-description');
-       baguetteDescription.text(unsplashResponse.results[0].alt_description);
        var baguetteString = unsplashResponse.results[0].urls.full;
        var baguetteImg = $('<img>');
+       baguetteImg.attr('alt', unsplashResponse.results[0].alt_description);
        $(baguetteImg).css({'width':'inherit', 'height':'inherit'});
        $(baguetteImg).attr('src', baguetteString);
        $(baguetteImg).appendTo(baguetteDiv);
@@ -72,9 +99,117 @@ $.ajax({
 
 
 
+
+
+
+// YOUTUBE API
+const apiKeyYoutube = 'AIzaSyDiJ4L5kg5fHA5kii65hc4766UiYe0u-Us';
+const playlistId1 = 'PLGk8cogrddcmMIL5KQYmyS69zJGRdFVyD';
+const playlistId2 = 'PLGk8cogrddclUSzkpSgcdzeP7Ir-40lQa';
+const playlistId3 = 'PLGk8cogrddckuqithmkd8W79F2U9AZhtn';
+const playlistArray = [playlistId1, playlistId2, playlistId3];
+let videoArray = [];
+const maxResults = 2;
+
+
+
+console.log(`Theme: ${theme}`);
+
+function randomWholeNum(arrayLength) {
+
+    // Only change code below this line
+  let randomNum = Math.floor(Math.random() * arrayLength);
+    return randomNum;
+  }
+
+
+function youtubeApiCall(themeIndex){
+let chosenPlaylist = playlistArray[themeIndex - 1];
+const urlYoutube = `https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=${chosenPlaylist}&key=${apiKeyYoutube}`;
+
+$.ajax({
+    url: urlYoutube,
+    method: "GET"
+    }).then(function(youtubeResponse) {
+        console.log(youtubeResponse);
+        videoArray = [];
+        for ( let i = 0; i < maxResults; i++) {
+            // var currentEtag = youtubeResponse.items[i].etag;
+            // if (currentEtag == localStorage.getItem())
+            var currentVideo = youtubeResponse.items[i].contentDetails.videoId;
+            videoArray.push(currentVideo);
+            console.log(videoArray);
+            
+            // stickTheOtherVideoIn();
+           
+        }
+        let randomIndex = randomWholeNum(videoArray.length);
+        stickTheVideoIn(videoArray[randomIndex]);
+    })
+}
+
+
+    console.log(videoArray);
+
+
+// This is the function which we need to call based on the theme number.
+    youtubeApiCall(theme);
+
+
+    
+
+    
+
+
+
+function stickTheVideoIn(value) {
+let firstVideo = value;
+console.log(firstVideo);
+var youtubeSource = `https://www.youtube.com/embed/${firstVideo}`;
+const htmlForIt = `<iframe id="real-player"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen></iframe>`
+
+let youtubeContainer = document.querySelector('#youtube-container');
+
+console.log(youtubeContainer);
+$(youtubeContainer).html(htmlForIt);
+console.log(youtubeSource);
+console.log('-----------------------------------------------------------------------------')
+
+const realPlayer = $('#real-player');
+console.log(realPlayer);
+realPlayer.attr('src', youtubeSource);
+console.log(youtubeContainer);
+};
+
+
+
+
+let themeNotSaved = 0;
+
+
+
+function themeChanger(event){
+console.log(event.target)
+if($(event.target).hasClass('active')) {
+    return;
+} else {
+    themeNotSaved = Number($(event.target).attr('data-number'));
+    console.log(themeNotSaved);
+    youtubeApiCall(themeNotSaved);
+    GetImage(themeNotSaved);
+    localStorage.setItem('theme', themeNotSaved);
+}
+}
+
 // PILL BUTTONS
-    // Select the active pill button from the theme variable.
-    // remove the class
-    // Need the theme to change based on the choice by the user of the pill button.
+$('#theme-btn-one').on('click', themeChanger)
+$('#theme-btn-two').on('click', themeChanger)
+$('#theme-btn-three').on('click', themeChanger)
+
+
+
+
+
+
 
 
