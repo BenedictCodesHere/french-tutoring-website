@@ -176,7 +176,7 @@ function stickTheVideoIn(value) {
 let firstVideo = value;
 console.log(firstVideo);
 var youtubeSource = `https://www.youtube.com/embed/${firstVideo}`;
-const htmlForIt = `<iframe id="real-player"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen></iframe>`
+const htmlForIt = `<iframe id="real-player" width="100%" height="auto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen ></iframe>`
 
 let youtubeContainer = document.querySelector('#youtube-container');
 
