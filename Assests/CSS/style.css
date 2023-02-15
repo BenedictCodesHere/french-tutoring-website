@@ -17,7 +17,7 @@
 }
 
 .business, .kids, .fun {
-    border-radius: 7px;
+    border-radius: 15px !important;
     color: black !important;
     margin: 0 0.25rem;
     font-weight: 600;
@@ -28,7 +28,7 @@
 }
 
 .themer:is(:hover, :focus) {
-    border-radius: 7px;
+    border-radius: 15px;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     scale: 1.1;
 }
@@ -38,7 +38,8 @@
 }
 
 .kids {
-    text-shadow: rgb(73, 75, 87) 2px -1px 5px;
+    text-shadow: rgb(252, 253, 255) 2px -1px 5px;
+    background-color: rgb(173, 171, 169);
 }
 
 .fun {
@@ -47,9 +48,8 @@
 
 a.active  {
     scale: 1.1;
-    border-radius: 7px;
+    border-radius: 15px;
     opacity: 1;
-    
 }
 
 .fun.active

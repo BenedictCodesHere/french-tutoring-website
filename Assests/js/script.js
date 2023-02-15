@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function(){
         if(selectedRadioBtn != undefined) {
             console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
             localStorage.setItem('theme', selectedRadioBtn);
-            myModal.hide()
+            myModal.hide();
             // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
             // or French for Fun.
             youtubeApiCall(selectedRadioBtn);
