@@ -13,9 +13,13 @@
 .nav-bar-container {
     display: inline-block;
     background-color: #1fb1d6;
-
 }
 
+.nav-text {
+    font-family: Arial;
+    font-weight: bold;
+}
+    
 .display-4{
     color:#1fb1d6;
     font-family: Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
@@ -43,19 +47,11 @@
     
     /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
 }
+
 .card-body {
     border-radius: 25px;
     border: 1px solid #1fb1d6;
-    background-image: linear-gradient(to bottom right, #87CEFA	);
-    
-}
-
-.best-offer-image {
-    width: 202px;
-    position: relative;
-    transform: rotate(2deg);
-    bottom: 250px;
-    left: 65px;
+    background-image: linear-gradient(to bottom right, #87CEFA	); 
 }
 
 .btn{
@@ -83,6 +79,16 @@
     width: 13rem; 
     height: 20rem;
 }
+
+.special-offer-img {
+    width: 202px;
+    position: relative;
+    transform: rotate(1deg);
+    bottom: 364px;
+    left: 65px;
+    /* opacity: 0.8; */
+}
+
 
 #theme-buttons {
     position: fixed;
@@ -146,7 +152,6 @@ a.active  {
     /* border: 2.5px solid #1fb1d6; */
     background-color: #db3347;
     /* background-image: linear-gradient(to bottom right, #db3347, white, #20b4d9); */
-
 }
 
 .testimonials {
