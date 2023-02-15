@@ -27,8 +27,8 @@
 
 .modal-title{
     color: 
-
 }
+
 
 .card-title {
     background-image: linear-gradient(to bottom right, #87CEFA	);
@@ -63,7 +63,7 @@
     border-radius: 15px;
     border: 1px solid #db3347;
     position: relative;
-    top: 140px;
+    top: 10px;
     height: 40px;
     width: 150px;
     text-transform: uppercase;
@@ -73,6 +73,10 @@
 /* change font */
 .book-now-font {
     font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .btn1 {
+    top: 98px;
  }
 
 .card{
@@ -145,3 +149,11 @@ a.active  {
 
 }
 
+.testimonials {
+    background-color: #1fb1d6;
+}
+
+.food {
+    background-color: #ffffff;
+    ;
+}
