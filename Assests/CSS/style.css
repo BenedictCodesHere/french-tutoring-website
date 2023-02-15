@@ -162,3 +162,7 @@ a.active  {
     background-color: #ffffff;
     ;
 }
+.jumbotron {
+    padding-bottom: 100px;
+  }
+  
