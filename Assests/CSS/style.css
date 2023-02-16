@@ -119,7 +119,7 @@
     margin: 0 0.25rem;
     font-weight: 600;
     font-family: Pacifico;
-    text-shadow: rgb(176, 255, 255) 2px -1px 5px;
+    
     opacity: 0.9;
    
 }
@@ -143,10 +143,11 @@
     background-color: #EF4135;
 }
 
-a.active  {
+.themer.active  {
     scale: 1.1;
     border-radius: 15px;
     opacity: 1;
+    text-shadow: rgb(176, 255, 255) 2px -1px 5px;
 }
 
 .fun.active
