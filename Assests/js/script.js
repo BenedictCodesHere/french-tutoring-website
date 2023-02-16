@@ -1,7 +1,10 @@
+// This line of code creates a modal, and prevents the modal from being closed by clicking off it.
 var myModal = new bootstrap.Modal(document.getElementById('myModal'), { backdrop:"static", keyboard: false });
 
+// Array of search terms for the unSplash API.
 const imageSearchTerms = ["french-pastries", "french-desserts", "french-casserole"];
 
+// This will be used in the window event listener immediately below.
 let selectedRadioBtn;
 
 
@@ -10,9 +13,11 @@ let selectedRadioBtn;
 // choice for the styling of the page on a prior visit.
 window.addEventListener('DOMContentLoaded', function(){
     var themeCheck = this.localStorage.getItem('theme');
+    // This condition checks whether there is any value for "theme" currently saved in localStorage. It shows the modal if there is no value saved.
     if(themeCheck == null) {
         myModal.show();
 
+        // This section changes the value of the theme based on which button is clicked.
         $('[name=styling]').on('click', function(event){
             console.log(event.target.value);
             selectedRadioBtn = event.target.value;
@@ -29,27 +34,32 @@ window.addEventListener('DOMContentLoaded', function(){
          GetImage(selectedRadioBtn);
          checkTheme(selectedRadioBtn);
          theme = localStorage.getItem('theme');
-        })
+        });
         
+
+        // This event listener results in the chosen theme being saved and stored, and the modal being hidden.
         $('#save-modal').on('click', function(){
         console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
         if(selectedRadioBtn != undefined) {
             console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
             localStorage.setItem('theme', selectedRadioBtn);
-            myModal.hide()
-            // this runs the function
+            myModal.hide();
+            // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
+            // or French for Fun.
             youtubeApiCall(selectedRadioBtn);
+            // This runs the unSplash API call to grab the relevant image based on theme selection.
             GetImage(selectedRadioBtn);
+            // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
             checkTheme(selectedRadioBtn);
+            // THis line simply updates the global "theme" variable. 
             theme = localStorage.getItem('theme');
         }
-        })
+        });
 
 
     }
     
-    
-   })
+   });
 
  var theme = localStorage.getItem('theme');
    console.log(`theme: ${theme}`);
@@ -166,7 +176,7 @@ function stickTheVideoIn(value) {
 let firstVideo = value;
 console.log(firstVideo);
 var youtubeSource = `https://www.youtube.com/embed/${firstVideo}`;
-const htmlForIt = `<iframe id="real-player" width="530px" height="321px" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen ></iframe>`
+const htmlForIt = `<iframe id="real-player" width="100%" height="auto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen ></iframe>`
 
 let youtubeContainer = document.querySelector('#youtube-container');
 
