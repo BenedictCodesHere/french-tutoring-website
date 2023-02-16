@@ -210,10 +210,23 @@
     padding-bottom: 100px;
   }
 
+  @media screen and (max-width: 768px) {
+    /* styles for tablets and mobile devices */
+  
+    #book {
+      transform: scale(0.8);
+    }
+  
+    #youtube-container {
+      transform: scale(0.8);
+    }
+}
+  
+
+
+
 .cuisine-heading {
     color: #1b3ac5;
     font-weight: bold;
 }
-
-
 /* END OF SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
