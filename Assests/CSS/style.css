@@ -90,6 +90,17 @@
 }
 
 
+.special-offer-img {
+    width: 202px;
+    position: relative;
+    transform: rotate(1deg);
+    bottom: 364px;
+    left: 65px;
+    /* opacity: 0.8; */
+}
+
+
+/* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
     position: fixed;
     display: flex;
@@ -103,18 +114,18 @@
 }
 
 .business, .kids, .fun {
+    border-radius: 15px !important;
     color: black !important;
-    border: 4px ridge  #afa2b1;
-    box-shadow: purple 4px -2px 5px;
     margin: 0 0.25rem;
     font-weight: 600;
     font-family: Pacifico;
-    text-shadow: rgb(176, 255, 255) 2px -1px 5px;
+    
     opacity: 0.9;
+   
 }
 
 .themer:is(:hover, :focus) {
-    box-shadow: rgb(247, 5, 247) 4px -2px 5px 1px;
+    border-radius: 15px;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     scale: 1.1;
 }
@@ -123,16 +134,20 @@
     background-color: #0055A4;
 }
 
+.kids {
+    text-shadow: rgb(252, 253, 255) 2px -1px 5px;
+    background-color: rgb(173, 171, 169);
+}
+
 .fun {
     background-color: #EF4135;
 }
 
-a.active  {
+.themer.active  {
     scale: 1.1;
-    box-shadow: rgb(247, 5, 247) 4px -2px 5px 1px;
-    border: 6px ridge #d8aa96;
+    border-radius: 15px;
     opacity: 1;
-    
+    text-shadow: rgb(176, 255, 255) 2px -1px 5px;
 }
 
 .fun.active
@@ -146,6 +161,7 @@ a.active  {
 
 .kids.active {
     background-color: #FFFFFF !important;
+    text-shadow: rgb(0, 30, 255) 2px -1px 5px;
 }
 
 .jumbotron {
@@ -166,3 +182,4 @@ a.active  {
     padding-bottom: 100px;
   }
 
+/* END OF SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */

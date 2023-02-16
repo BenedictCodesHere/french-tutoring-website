@@ -34,4 +34,11 @@
 
 
 
+// CURRENT PAGE FUNCTIONALITY
+    // 1. Youtube API
+    // 2. Unsplash API
+    // 3. Theme switching navbar 
+            // Should:
+                // 3a) Structure so that the anchor tags link to different .html files.
+                // 3b)
 
