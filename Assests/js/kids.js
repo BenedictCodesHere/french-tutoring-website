@@ -19,81 +19,71 @@ window.addEventListener('DOMContentLoaded', function(){
     if(themeCheck == null) {
         myModal.show();
 
-      
+        // This section changes the value of the theme based on which button is clicked.
+        $('[name=styling]').on('click', function(event){
+            console.log(event.target.value);
+            selectedRadioBtn = event.target.value;
+            console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
+            theme = localStorage.getItem('theme');
+        })
+        
+
+
+
+        // Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
+        // choose their theme.
+        $('#close-modal').on('click', function(event){
+         selectedRadioBtn = 3;
+         console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+         youtubeApiCall(selectedRadioBtn);
+         GetImage(selectedRadioBtn);
+         checkTheme(selectedRadioBtn);
+         theme = localStorage.getItem('theme');
+        });
+        
+
+        // This event listener results in the chosen theme being saved and stored, and the modal being hidden.
+        $('#save-modal').on('click', function(){
+        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+        if(selectedRadioBtn != undefined) {
+            console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+            localStorage.setItem('theme', selectedRadioBtn);
+            myModal.hide();
+            // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
+            // or French for Fun.
+            youtubeApiCall(selectedRadioBtn);
+            // This runs the unSplash API call to grab the relevant image based on theme selection.
+            GetImage(selectedRadioBtn);
+            // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
+            checkTheme(selectedRadioBtn);
+            // THis line simply updates the global "theme" variable. 
+            theme = localStorage.getItem('theme');
+            var themeNum = Number(theme);
+         console.log(`themeNum: ${themeNum}`);
+         var selectedLandingPage = arrayOfPageUrls[themeNum - 1];
+         console.log(`selectedLandingPage: ${selectedLandingPage}`);
+         window.location = selectedLandingPage.toString();
+        }
+        });
 
 
     }
-     
+    //  else if (themeCheck == 1) {
+    //     this.window.location = arrayOfPageUrls[0];
+    // } else if (themeCheck == 2) {
+    //     // what is happening is that each time the page is loading, it is running this script. Currently, themeCheck is permanently 2. And so, it's just in an 
+    //     // endless loop of redirecting to the page due to this part of the script executing every time the page loads.
+    //     // You either need to: 
+    //         // Isolate
+    //     this.window.location = arrayOfPageUrls[1];
+    // } else if (themeCheck == 3) {
+    //     this.window.location == arrayOfPageUrls[2];
+    // }
     
    });
 
-
-
-  // This section changes the value of the theme based on which button is clicked.
-  $('[name=styling]').on('click', function(event){
-    console.log(event.target.value);
-    selectedRadioBtn = event.target.value;
-    console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
-    theme = localStorage.getItem('theme');
-})
-
-
-
-
-// Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
-// choose their theme.
-$('#close-modal').on('click', function(event){
- selectedRadioBtn = 3;
- console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
- youtubeApiCall(selectedRadioBtn);
- GetImage(selectedRadioBtn);
- checkTheme(selectedRadioBtn);
- theme = localStorage.getItem('theme');
-});
-
-
-// This event listener results in the chosen theme being saved and stored, and the modal being hidden.
-$('#save-modal').on('click', function(){
-console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-if(selectedRadioBtn != undefined) {
-    console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-    localStorage.setItem('theme', selectedRadioBtn);
-    myModal.hide();
-    // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
-    // or French for Fun.
-    youtubeApiCall(selectedRadioBtn);
-    // This runs the unSplash API call to grab the relevant image based on theme selection.
-    GetImage(selectedRadioBtn);
-    // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
-    checkTheme(selectedRadioBtn);
-    // THis line simply updates the global "theme" variable. 
-    theme = localStorage.getItem('theme');
-    var themeNum = Number(theme);
- console.log(`themeNum: ${themeNum}`);
- var selectedLandingPage = arrayOfPageUrls[themeNum - 1];
- console.log(`selectedLandingPage: ${selectedLandingPage}`);
- window.location = selectedLandingPage.toString();
-}
-});
-
-
-
-
-   
-
  var theme = localStorage.getItem('theme');
    console.log(`theme: ${theme}`);
-
-//    console.log(window.location);
-//     if (theme == "1" && window.location == "index.html") {
-//     window.location = arrayOfPageUrls[0];
-// } 
-// else if (theme == "2" && window.location != "kids.html") {
-  
-//     window.location = arrayOfPageUrls[1];
-// } else if (theme == "3" && window.location != "index.html") {
-//     window.location = arrayOfPageUrls[2];
-// }
    GetImage(theme);
 
    function checkTheme(themeStored){
@@ -207,7 +197,7 @@ function stickTheVideoIn(value) {
 let firstVideo = value;
 console.log(firstVideo);
 var youtubeSource = `https://www.youtube.com/embed/${firstVideo}`;
-const htmlForIt = `<iframe id="real-player" width="500px" height="300px" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen ></iframe>`
+const htmlForIt = `<iframe id="real-player" width="100%" height="auto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; gyroscope; web-share" allowfullscreen ></iframe>`
 
 let youtubeContainer = document.querySelector('#youtube-container');
 
