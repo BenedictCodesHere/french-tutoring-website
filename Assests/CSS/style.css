@@ -166,3 +166,15 @@ a.active  {
     padding-bottom: 100px;
   }
 
+  @media screen and (max-width: 768px) {
+    /* styles for tablets and mobile devices */
+  
+    #book {
+      transform: scale(0.8);
+    }
+  
+    #youtube-container {
+      transform: scale(0.8);
+    }
+  }
+  
