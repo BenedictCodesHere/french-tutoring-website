@@ -32,6 +32,10 @@ The way to use the deployed application is to:
 
 ## Screenshot Of Deployed Application
 
+
+## Link to Presentation
+![Presentation](Presentation.pdf) 
+
 ## Credits
 
 This repository has been an active collaboration from four Github users. 
