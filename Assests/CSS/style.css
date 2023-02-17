@@ -87,7 +87,7 @@
     /* background-image: linear-gradient(to bottom right, #87CEFA	); */
     /* background-color: #db3347; */
     border-radius: 20px;
-    font:
+    /* font: */
 }
 
 .card { 
@@ -126,14 +126,22 @@
 }
 
 .special-offer-img {
-    width: 202px;
+    width: 302px;
     position: relative;
-    transform: rotate(1deg);
-    bottom: 364px;
-    left: 65px;
-    /* opacity: 0.8; */
+    transform: rotate(315deg);
+    bottom: 452px;
+    left: -50px;
+    opacity: 1;
 }
 
+.special-offer-img-kids {
+    width: 302px;
+    position: relative;
+    transform: rotate(315deg);
+    bottom: 477px;
+    left: -50px;
+    opacity: 1;
+}
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
@@ -232,5 +240,5 @@
       transform: scale(0.8);
     }
 
-
+  }
 /* END OF SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
