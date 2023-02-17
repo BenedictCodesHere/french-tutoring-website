@@ -137,9 +137,9 @@ $.ajax({
         console.log(unsplashResponse);
        var baguetteDiv = $('.baguette-div');
        baguetteDiv.empty();
-       var baguetteString = unsplashResponse.results[0].urls.full;
+       var baguetteString = unsplashResponse.results[3].urls.full;
        var baguetteImg = $('<img>');
-       baguetteImg.attr('alt', unsplashResponse.results[0].alt_description);
+       baguetteImg.attr('alt', unsplashResponse.results[3].alt_description);
        $(baguetteImg).css({'width':'inherit', 'height':'inherit'});
        $(baguetteImg).attr('src', baguetteString);
        $(baguetteImg).appendTo(baguetteDiv);
