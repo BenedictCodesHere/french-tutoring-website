@@ -2,7 +2,13 @@
 var myModal = new bootstrap.Modal(document.getElementById('myModal'), { backdrop:"static", keyboard: false });
 
 // Array of search terms for the unSplash API.
-const imageSearchTerms = ["french-pastries", "french-desserts", "french-casserole"];
+const imageSearchTermsBase = ["french-pastries", "french-desserts", "french-casserole"];
+
+const imageSearchTermsCartoons = ["Tintin"]
+
+const imageSearchTermsBusiness = ["Conference"]
+
+const unsplashArray = [imageSearchTermsBusiness, imageSearchTermsCartoons, imageSearchTermsBase];
 
 const arrayOfPageUrls = ["business.html", "kids.html", "index.html"];
 
@@ -46,7 +52,7 @@ $('#close-modal').on('click', function(event){
  selectedRadioBtn = 3;
  console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
  youtubeApiCall(selectedRadioBtn);
- GetImage(selectedRadioBtn);
+ GetImage(imageSearchTermsBase);
  checkTheme(selectedRadioBtn);
  theme = localStorage.getItem('theme');
 });
@@ -63,7 +69,15 @@ if(selectedRadioBtn != undefined) {
     // or French for Fun.
     youtubeApiCall(selectedRadioBtn);
     // This runs the unSplash API call to grab the relevant image based on theme selection.
-    GetImage(selectedRadioBtn);
+    if (selectedRadioBtn === 1) {
+        GetImage(imageSearchTermsBusiness);
+    }
+    if (selectedRadioBtn === 2) {
+        GetImage(imageSearchTermsCartoons);
+    }
+    if (selectedRadioBtn === 3) {
+        GetImage(imageSearchTermsBase);
+    }
     // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
     checkTheme(selectedRadioBtn);
     // THis line simply updates the global "theme" variable. 
@@ -94,7 +108,10 @@ if(selectedRadioBtn != undefined) {
 // } else if (theme == "3" && window.location != "index.html") {
 //     window.location = arrayOfPageUrls[2];
 // }
-   GetImage(theme);
+
+var currentArray = unsplashArray[theme - 1];
+console.log(currentArray);
+   GetImage(currentArray);
 
    function checkTheme(themeStored){
     let currentlyActiveBtnNumber = $('.active').attr('data-number');
@@ -120,8 +137,15 @@ checkTheme(theme);
 
 
 // FUNCTION to get an image from the unsplash API based on the relevant search term, which is selected due to the user's theme choice.
-function GetImage(num){
-var unsplashURL = `https://api.unsplash.com/search/photos/?query=${imageSearchTerms[num - 1]}&page=1&orientation=landscape&client_id=n9E_S2EHFcnLYsoG5u6jQxiQbaC0NN-KhidZTVGIH8w`;
+function GetImage(arr){
+    var internalArray = Array.from(arr);
+    console.log(internalArray);
+    var selectedNumber = randomWholeNum(internalArray.length);
+    console.log(selectedNumber);
+    var drama = internalArray[selectedNumber];
+    console.log(drama);
+var unsplashURL = `https://api.unsplash.com/search/photos/?query=${drama}&page=1&orientation=landscape&client_id=n9E_S2EHFcnLYsoG5u6jQxiQbaC0NN-KhidZTVGIH8w`;
+console.log(unsplashURL);
 $.ajax({
     url: unsplashURL,
     method: "GET"
@@ -228,25 +252,43 @@ console.log(youtubeContainer);
 let themeNotSaved = 0;
 
 
-
 function themeChanger(event){
 console.log(event.target)
 if($(event.target).hasClass('active')) {
     return;
 } else {
     themeNotSaved = Number($(event.target).attr('data-number'));
-    console.log(themeNotSaved);
+    // console.log(themeNotSaved);
+    // console.log(themeNotSaved);
+    // console.log(themeNotSaved);
+    // console.log(themeNotSaved);
+    // console.log(themeNotSaved);
+
+    // if (themeNotSaved == 1) {
+    //     console.log(imageSearchTermsBusiness);
+    //     console.log(imageSearchTermsBusiness);
+    //     console.log(imageSearchTermsBusiness);
+    //     console.log(imageSearchTermsBusiness);
+    //     console.log(imageSearchTermsBusiness);
+    //     GetImage(imageSearchTermsBusiness);
+    // }
+    // if (themeNotSaved == 2) {
+    //     GetImage(imageSearchTermsCartoons);
+    // }
+    // if (themeNotSaved == 3) {
+    //     GetImage(imageSearchTermsBase);
+    // }
     youtubeApiCall(themeNotSaved);
-    GetImage(themeNotSaved);
     localStorage.setItem('theme', themeNotSaved);
     console.log(`theme: ${themeNotSaved}`);
-}
+    
+    }
 }
 
 // PILL BUTTONS
-$('#theme-btn-one').on('click', themeChanger)
-$('#theme-btn-two').on('click', themeChanger)
-$('#theme-btn-three').on('click', themeChanger)
+$('#theme-btn-one').on('click', themeChanger);
+$('#theme-btn-two').on('click', themeChanger);
+$('#theme-btn-three').on('click', themeChanger);
 
 
 
