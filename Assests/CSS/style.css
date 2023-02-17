@@ -154,8 +154,8 @@
     border: 2px ridge  #ffffff;
     /* box-shadow: purple 4px -2px 5px; */
     margin: 0 0.25rem;
-    font-weight: 600;
-    font-family: Helvetica;
+    font-weight: bold;
+    font-family: sans-serif;
     /*  */
     opacity: 1;
    
