@@ -25,8 +25,61 @@ window.addEventListener('DOMContentLoaded', function(){
     if(themeCheck == null) {
         myModal.show();
 
-      
+       // This section changes the value of the theme based on which button is clicked.
+    $('[name=styling]').on('click', function(event){
+        console.log(event.target.value);
+        selectedRadioBtn = Number(event.target.value);
+        console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
+        theme = localStorage.getItem('theme');
+    });
 
+            // Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
+    // choose their theme.
+    $('#close-modal').on('click', function(event){
+        selectedRadioBtn = 3;
+        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+        youtubeApiCall(selectedRadioBtn);
+        GetImage(imageSearchTermsBase);
+        checkTheme(selectedRadioBtn);
+        theme = localStorage.getItem('theme');
+    });
+
+
+    
+
+    // This event listener results in the chosen theme being saved and stored, and the modal being hidden.
+    $('#save-modal').on('click', function(){
+        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+        if(selectedRadioBtn != undefined) {
+            console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
+            localStorage.setItem('theme', selectedRadioBtn);
+            myModal.hide();
+            // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
+            // or French for Fun.
+            youtubeApiCall(selectedRadioBtn);
+            // This runs the unSplash API call to grab the relevant image based on theme selection.
+            if (selectedRadioBtn === 1) {
+                GetImage(imageSearchTermsBusiness);
+            }
+            if (selectedRadioBtn === 2) {
+                GetImage(imageSearchTermsCartoons);
+            }
+            if (selectedRadioBtn === 3) {
+                GetImage(imageSearchTermsBase);
+            }
+            // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
+            checkTheme(selectedRadioBtn);
+            // THis line simply updates the global "theme" variable. 
+            theme = localStorage.getItem('theme');
+            var themeNum = Number(theme);
+        console.log(`themeNum: ${themeNum}`);
+        var selectedLandingPage = arrayOfPageUrls[themeNum - 1];
+        console.log(`selectedLandingPage: ${selectedLandingPage}`);
+        window.location = selectedLandingPage.toString();
+        }
+    });
+        
+    
 
     }
      
@@ -35,60 +88,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
 
-  // This section changes the value of the theme based on which button is clicked.
-  $('[name=styling]').on('click', function(event){
-    console.log(event.target.value);
-    selectedRadioBtn = event.target.value;
-    console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
-    theme = localStorage.getItem('theme');
-})
+ 
 
 
 
-
-// Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
-// choose their theme.
-$('#close-modal').on('click', function(event){
- selectedRadioBtn = 3;
- console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
- youtubeApiCall(selectedRadioBtn);
- GetImage(imageSearchTermsBase);
- checkTheme(selectedRadioBtn);
- theme = localStorage.getItem('theme');
-});
-
-
-// This event listener results in the chosen theme being saved and stored, and the modal being hidden.
-$('#save-modal').on('click', function(){
-console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-if(selectedRadioBtn != undefined) {
-    console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-    localStorage.setItem('theme', selectedRadioBtn);
-    myModal.hide();
-    // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
-    // or French for Fun.
-    youtubeApiCall(selectedRadioBtn);
-    // This runs the unSplash API call to grab the relevant image based on theme selection.
-    if (selectedRadioBtn === 1) {
-        GetImage(imageSearchTermsBusiness);
-    }
-    if (selectedRadioBtn === 2) {
-        GetImage(imageSearchTermsCartoons);
-    }
-    if (selectedRadioBtn === 3) {
-        GetImage(imageSearchTermsBase);
-    }
-    // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
-    checkTheme(selectedRadioBtn);
-    // THis line simply updates the global "theme" variable. 
-    theme = localStorage.getItem('theme');
-    var themeNum = Number(theme);
- console.log(`themeNum: ${themeNum}`);
- var selectedLandingPage = arrayOfPageUrls[themeNum - 1];
- console.log(`selectedLandingPage: ${selectedLandingPage}`);
- window.location = selectedLandingPage.toString();
-}
-});
 
 
 
@@ -97,17 +100,6 @@ if(selectedRadioBtn != undefined) {
 
  var theme = localStorage.getItem('theme');
    console.log(`theme: ${theme}`);
-
-//    console.log(window.location);
-//     if (theme == "1" && window.location == "index.html") {
-//     window.location = arrayOfPageUrls[0];
-// } 
-// else if (theme == "2" && window.location != "kids.html") {
-  
-//     window.location = arrayOfPageUrls[1];
-// } else if (theme == "3" && window.location != "index.html") {
-//     window.location = arrayOfPageUrls[2];
-// }
 
 var currentArray = unsplashArray[theme - 1];
 console.log(currentArray);
@@ -125,16 +117,8 @@ console.log(currentArray);
     $(setActiveBtn).addClass('active');
 }
 
+// This function is called to make sure that the theme-switching navbar has the correct button with a class of "active".
 checkTheme(theme);
-
-
-
-    
-
-
-
-
-
 
 // FUNCTION to get an image from the unsplash API based on the relevant search term, which is selected due to the user's theme choice.
 function GetImage(arr){
@@ -174,7 +158,7 @@ const playlistId2 = 'PLGk8cogrddclUSzkpSgcdzeP7Ir-40lQa';
 const playlistId3 = 'PLGk8cogrddckuqithmkd8W79F2U9AZhtn';
 const playlistArray = [playlistId1, playlistId2, playlistId3];
 let videoArray = [];
-const maxResults = 2;
+const maxResults = 3;
 
 
 
@@ -208,8 +192,8 @@ $.ajax({
             // stickTheOtherVideoIn();
            
         }
-        let randomIndex = randomWholeNum(videoArray.length);
-        stickTheVideoIn(videoArray[randomIndex]);
+        let videoIndex = videoArray.length - 1;
+        stickTheVideoIn(videoArray[videoIndex]);
     })
 }
 
