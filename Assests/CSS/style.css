@@ -87,7 +87,6 @@
     /* background-image: linear-gradient(to bottom right, #87CEFA	); */
     /* background-color: #db3347; */
     border-radius: 20px;
-    /* font: */
 }
 
 .card { 
@@ -229,6 +228,10 @@
     color: #78B7E5;
 }
 
+.section-heading{
+    margin-bottom: 50px;
+}
+
   @media screen and (max-width: 768px) {
     /* styles for tablets and mobile devices */
   
@@ -238,6 +241,14 @@
   
     #youtube-container {
       transform: scale(0.8);
+    }
+
+  }
+  @media screen and (max-width: 500px) {
+
+    #real-player {
+
+        width: 360px;
     }
 
   }
