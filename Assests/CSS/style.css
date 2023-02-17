@@ -124,7 +124,7 @@
     height: 20rem;
 }
 
-.special-offer-img {
+/* .special-offer-img {
     width: 302px;
     position: relative;
     transform: rotate(315deg);
@@ -140,7 +140,7 @@
     bottom: 477px;
     left: -50px;
     opacity: 1;
-}
+} */
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
