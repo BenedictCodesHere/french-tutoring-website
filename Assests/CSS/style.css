@@ -143,7 +143,6 @@
     opacity: 1;
 }
 
-
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
     position: fixed;
@@ -241,5 +240,5 @@
       transform: scale(0.8);
     }
 
-
+  }
 /* END OF SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
