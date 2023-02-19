@@ -12,11 +12,14 @@
 /* Nav Bar */
 .nav-bar-container {
     /* display: inline-block; */
-    background-color: #ffea75;
+    /* background-color: #FFFFFF;  */
+    background-color: #FFFFFF;
+    /* background-color: #ffea75; */
     
 }
 
 .nav-text {
+    /* color: #78B7E5; */
     color: #78B7E5;
     font-weight: bold;
 }
@@ -57,6 +60,15 @@
     font-weight: bold;
 }
 
+.Bertrand-icon {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    top: 5px;
+    left: 750px;
+}
+
 .testimonials {
     background-color: #78B7E5;
 }
@@ -76,7 +88,7 @@
   }
 
 .cuisine-heading {
-    color: #31788c;
+    color: #78B7E5;
     font-family: Helvetica;
     font-weight: bold;
 }
@@ -124,23 +136,18 @@
     height: 20rem;
 }
 
-/* .special-offer-img {
-    width: 302px;
-    position: relative;
-    transform: rotate(315deg);
-    bottom: 452px;
-    left: -50px;
-    opacity: 1;
+.chart_best_value {
+    text-align: center;
+    align-items: center;
+    width: 93px;
+    height: 5px;
+    background: #ff615c;
+    border-radius: 8px 8px 0px 0px;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0 auto;
 }
-
-.special-offer-img-kids {
-    width: 302px;
-    position: relative;
-    transform: rotate(315deg);
-    bottom: 477px;
-    left: -50px;
-    opacity: 1;
-} */
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
