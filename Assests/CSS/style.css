@@ -12,11 +12,14 @@
 /* Nav Bar */
 .nav-bar-container {
     /* display: inline-block; */
-    background-color: #ffea75;
+    /* background-color: #FFFFFF;  */
+    background-color: #FFFFFF;
+    /* background-color: #ffea75; */
     
 }
 
 .nav-text {
+    /* color: #78B7E5; */
     color: #78B7E5;
     font-weight: bold;
 }
@@ -57,6 +60,15 @@
     font-weight: bold;
 }
 
+.Bertrand-icon {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    top: 5px;
+    left: 750px;
+}
+
 .testimonials {
     background-color: #78B7E5;
 }
@@ -76,7 +88,7 @@
   }
 
 .cuisine-heading {
-    color: #31788c;
+    color: #78B7E5;
     font-family: Helvetica;
     font-weight: bold;
 }
@@ -111,9 +123,11 @@
     text-transform: uppercase;
   
   }
-.book-now-font {
-    font-family: Arial, Helvetica, sans-serif;
- }
+
+.button-font {
+    color:#ffffff;
+}
+
 
  .btn1 {
     top: 98px;
@@ -124,23 +138,20 @@
     height: 20rem;
 }
 
-/* .special-offer-img {
-    width: 302px;
-    position: relative;
-    transform: rotate(315deg);
-    bottom: 452px;
-    left: -50px;
-    opacity: 1;
+.chart_best_value {
+    display: inline-block;
+    text-align: center;
+    align-items:right;
+    width: 85px;
+    background: #EA5555;
+    border-radius: 60px 60px 0px 0px;
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 12px;
+    margin: 0 auto;
+    padding: 10px; 
+    margin-top: -32px;
 }
-
-.special-offer-img-kids {
-    width: 302px;
-    position: relative;
-    transform: rotate(315deg);
-    bottom: 477px;
-    left: -50px;
-    opacity: 1;
-} */
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
 #theme-buttons {
