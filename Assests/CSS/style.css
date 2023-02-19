@@ -123,9 +123,11 @@
     text-transform: uppercase;
   
   }
-.book-now-font {
-    font-family: Arial, Helvetica, sans-serif;
- }
+
+.button-font {
+    color:#ffffff;
+}
+
 
  .btn1 {
     top: 98px;
@@ -137,16 +139,18 @@
 }
 
 .chart_best_value {
+    display: inline-block;
     text-align: center;
-    align-items: center;
-    width: 93px;
-    height: 5px;
-    background: #ff615c;
-    border-radius: 8px 8px 0px 0px;
+    align-items:right;
+    width: 85px;
+    background: #EA5555;
+    border-radius: 60px 60px 0px 0px;
     color: #ffffff;
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 10px;
+    line-height: 12px;
     margin: 0 auto;
+    padding: 10px; 
+    margin-top: -32px;
 }
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
