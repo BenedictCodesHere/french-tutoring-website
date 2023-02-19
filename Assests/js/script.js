@@ -2,11 +2,11 @@
 var myModal = new bootstrap.Modal(document.getElementById('myModal'), { backdrop:"static", keyboard: false });
 
 // Array of search terms for the unSplash API.
-const imageSearchTermsBase = ["french-pastries", "french-desserts", "french-casserole"];
+const imageSearchTermsBase = ["french-pastries", "french-desserts"];
 
 const imageSearchTermsCartoons = ["Tintin"]
 
-const imageSearchTermsBusiness = ["Conference"]
+const imageSearchTermsBusiness = ["Business-meeting"]
 
 const unsplashArray = [imageSearchTermsBusiness, imageSearchTermsCartoons, imageSearchTermsBase];
 
@@ -44,9 +44,6 @@ window.addEventListener('DOMContentLoaded', function(){
         theme = localStorage.getItem('theme');
     });
 
-
-    
-
     // This event listener results in the chosen theme being saved and stored, and the modal being hidden.
     $('#save-modal').on('click', function(){
         console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
@@ -78,25 +75,10 @@ window.addEventListener('DOMContentLoaded', function(){
         window.location = selectedLandingPage.toString();
         }
     });
-        
-    
 
     }
      
-    
    });
-
-
-
- 
-
-
-
-
-
-
-
-   
 
  var theme = localStorage.getItem('theme');
    console.log(`theme: ${theme}`);
@@ -128,7 +110,7 @@ function GetImage(arr){
     console.log(selectedNumber);
     var drama = internalArray[selectedNumber];
     console.log(drama);
-var unsplashURL = `https://api.unsplash.com/search/photos/?query=${drama}&page=1&orientation=landscape&client_id=n9E_S2EHFcnLYsoG5u6jQxiQbaC0NN-KhidZTVGIH8w`;
+var unsplashURL = `https://api.unsplash.com/search/collections/?query=${drama}&client_id=n9E_S2EHFcnLYsoG5u6jQxiQbaC0NN-KhidZTVGIH8w`;
 console.log(unsplashURL);
 $.ajax({
     url: unsplashURL,
@@ -137,9 +119,9 @@ $.ajax({
         console.log(unsplashResponse);
        var baguetteDiv = $('.baguette-div');
        baguetteDiv.empty();
-       var baguetteString = unsplashResponse.results[3].urls.full;
+       var baguetteString = unsplashResponse.results[1].cover_photo.urls.full;
        var baguetteImg = $('<img>');
-       baguetteImg.attr('alt', unsplashResponse.results[3].alt_description);
+       baguetteImg.attr('alt', unsplashResponse.results[1].alt_description);
        $(baguetteImg).css({'width':'inherit', 'height':'inherit'});
        $(baguetteImg).attr('src', baguetteString);
        $(baguetteImg).appendTo(baguetteDiv);
@@ -242,26 +224,6 @@ if($(event.target).hasClass('active')) {
     return;
 } else {
     themeNotSaved = Number($(event.target).attr('data-number'));
-    // console.log(themeNotSaved);
-    // console.log(themeNotSaved);
-    // console.log(themeNotSaved);
-    // console.log(themeNotSaved);
-    // console.log(themeNotSaved);
-
-    // if (themeNotSaved == 1) {
-    //     console.log(imageSearchTermsBusiness);
-    //     console.log(imageSearchTermsBusiness);
-    //     console.log(imageSearchTermsBusiness);
-    //     console.log(imageSearchTermsBusiness);
-    //     console.log(imageSearchTermsBusiness);
-    //     GetImage(imageSearchTermsBusiness);
-    // }
-    // if (themeNotSaved == 2) {
-    //     GetImage(imageSearchTermsCartoons);
-    // }
-    // if (themeNotSaved == 3) {
-    //     GetImage(imageSearchTermsBase);
-    // }
     youtubeApiCall(themeNotSaved);
     localStorage.setItem('theme', themeNotSaved);
     console.log(`theme: ${themeNotSaved}`);
