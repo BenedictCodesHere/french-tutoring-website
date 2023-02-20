@@ -140,6 +140,7 @@
 
 .chart_best_value {
     display: inline-block;
+    /* position: absolute; */
     text-align: center;
     align-items:right;
     width: 85px;
@@ -149,8 +150,9 @@
     font-size: 10px;
     line-height: 12px;
     margin: 0 auto;
-    padding: 10px; 
+    padding: 9px; 
     margin-top: -32px;
+    top: 50 px
 }
 
 /* SECTION FOR STYLING THE TRICOLORE FIXED THEME NAVBAR  */
