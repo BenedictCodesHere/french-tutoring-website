@@ -61,12 +61,12 @@
 }
 
 .Bertrand-icon {
-    display: inline-block;
-    position: relative;
+    /* display: inline-block;
+    position: relative; */
     width: 300px;
     height: 300px;
-    top: 5px;
-    left: 750px;
+    /* top: 5px;
+    left: 750px; */
 }
 
 .testimonials {
