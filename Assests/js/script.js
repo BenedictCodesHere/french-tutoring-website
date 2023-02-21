@@ -1,6 +1,3 @@
-// This line of code creates a modal, and prevents the modal from being closed by clicking off it.
-var myModal = new bootstrap.Modal(document.getElementById('myModal'), { backdrop:"static", keyboard: false });
-
 // Array of search terms for the unSplash API.
 const imageSearchTermsBase = ["french-pastries", "french-desserts"];
 
@@ -15,70 +12,6 @@ const arrayOfPageUrls = ["business.html", "kids.html", "index.html"];
 // This will be used in the window event listener immediately below.
 let selectedRadioBtn;
 
-
-// This event listener will show the modal on page load, if the user has not already actively selected a theme on a prior visit.
-// The comments within the function should be commented out on deployment, as those comments check whether the user has made an active
-// choice for the styling of the page on a prior visit.
-window.addEventListener('DOMContentLoaded', function(){
-    var themeCheck = this.localStorage.getItem('theme');
-    // This condition checks whether there is any value for "theme" currently saved in localStorage. It shows the modal if there is no value saved.
-    if(themeCheck == null) {
-        myModal.show();
-
-       // This section changes the value of the theme based on which button is clicked.
-    $('[name=styling]').on('click', function(event){
-        console.log(event.target.value);
-        selectedRadioBtn = Number(event.target.value);
-        console.log(`selectedRadioBtn: ${selectedRadioBtn}`)
-        theme = localStorage.getItem('theme');
-    });
-
-            // Close button. Takes the default of "French for Fun" choice selection. Choice not persist in localStorage, as user did not actively
-    // choose their theme.
-    $('#close-modal').on('click', function(event){
-        selectedRadioBtn = 3;
-        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-        youtubeApiCall(selectedRadioBtn);
-        GetImage(imageSearchTermsBase);
-        checkTheme(selectedRadioBtn);
-        theme = localStorage.getItem('theme');
-    });
-
-    // This event listener results in the chosen theme being saved and stored, and the modal being hidden.
-    $('#save-modal').on('click', function(){
-        console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-        if(selectedRadioBtn != undefined) {
-            console.log(`selectedRadioBtn: ${selectedRadioBtn}`);
-            localStorage.setItem('theme', selectedRadioBtn);
-            myModal.hide();
-            // this runs the function to grab the relevant Youtube video dependent on the user's selection of French for Business, French For Kids,
-            // or French for Fun.
-            youtubeApiCall(selectedRadioBtn);
-            // This runs the unSplash API call to grab the relevant image based on theme selection.
-            if (selectedRadioBtn === 1) {
-                GetImage(imageSearchTermsBusiness);
-            }
-            if (selectedRadioBtn === 2) {
-                GetImage(imageSearchTermsCartoons);
-            }
-            if (selectedRadioBtn === 3) {
-                GetImage(imageSearchTermsBase);
-            }
-            // This function makes sure that the theme-switching navbar has the correct anchor element being styled with the class of "active".
-            checkTheme(selectedRadioBtn);
-            // THis line simply updates the global "theme" variable. 
-            theme = localStorage.getItem('theme');
-            var themeNum = Number(theme);
-        console.log(`themeNum: ${themeNum}`);
-        var selectedLandingPage = arrayOfPageUrls[themeNum - 1];
-        console.log(`selectedLandingPage: ${selectedLandingPage}`);
-        window.location = selectedLandingPage.toString();
-        }
-    });
-
-    }
-     
-   });
 
  var theme = localStorage.getItem('theme');
    console.log(`theme: ${theme}`);
@@ -165,33 +98,19 @@ $.ajax({
         console.log(youtubeResponse);
         videoArray = [];
         for ( let i = 0; i < maxResults; i++) {
-            // var currentEtag = youtubeResponse.items[i].etag;
-            // if (currentEtag == localStorage.getItem())
             var currentVideo = youtubeResponse.items[i].contentDetails.videoId;
             videoArray.push(currentVideo);
             console.log(videoArray);
-            
-            // stickTheOtherVideoIn();
-           
         }
         let videoIndex = videoArray.length - 1;
         stickTheVideoIn(videoArray[videoIndex]);
     })
 }
 
-
     console.log(videoArray);
-
 
 // This is the function which we need to call based on the theme number.
     youtubeApiCall(theme);
-
-
-    
-
-    
-
-
 
 function stickTheVideoIn(value) {
 let firstVideo = value;
@@ -204,19 +123,13 @@ let youtubeContainer = document.querySelector('#youtube-container');
 console.log(youtubeContainer);
 $(youtubeContainer).html(htmlForIt);
 console.log(youtubeSource);
-console.log('-----------------------------------------------------------------------------')
-
 const realPlayer = $('#real-player');
 console.log(realPlayer);
 realPlayer.attr('src', youtubeSource);
 console.log(youtubeContainer);
 };
 
-
-
-
 let themeNotSaved = 0;
-
 
 function themeChanger(event){
 console.log(event.target)
@@ -227,7 +140,6 @@ if($(event.target).hasClass('active')) {
     youtubeApiCall(themeNotSaved);
     localStorage.setItem('theme', themeNotSaved);
     console.log(`theme: ${themeNotSaved}`);
-    
     }
 }
 
